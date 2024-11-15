@@ -32,6 +32,7 @@ const LESS_THAN_TWENTY: string[] = [
   "nineteen",
 ];
 
+
 const TENTHS_LESS_THAN_HUNDRED: string[] = [
   "zero",
   "ten",

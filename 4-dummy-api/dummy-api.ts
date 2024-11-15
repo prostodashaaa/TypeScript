@@ -53,5 +53,4 @@ function displayUsers(users: User[]): void {
     console.log({ firstName, lastName, age, gender, email, address });
   });
 }
-
 getFetch("https://dummyjson.com/users").then(displayUsers);
