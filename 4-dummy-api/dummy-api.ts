@@ -36,14 +36,17 @@ interface ResponseData {
 async function getFetch(url: string): Promise<User[]> {
   try {
     const res = await fetch(url);
+
     if (!res.ok) {
       throw new Error(`Ошибка ${res.status}: ${res.statusText}`);
     }
-
+    
     const data: ResponseData = await res.json();
     return data.users;
   } catch (error) {
-    console.error("Ошибка при получении данных:", error);
+    if (error instanceof Error) {
+      console.log("Ошибка при получении данных:", error);
+    }
     return [];
   }
 }
@@ -53,5 +56,4 @@ function displayUsers(users: User[]): void {
     console.log({ firstName, lastName, age, gender, email, address });
   });
 }
-
 getFetch("https://dummyjson.com/users").then(displayUsers);
