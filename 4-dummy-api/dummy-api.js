@@ -24,7 +24,9 @@ function getFetch(url) {
             return data.users;
         }
         catch (error) {
-            console.error("Ошибка при получении данных:", error);
+            if (error instanceof Error) {
+                console.log("Ошибка при получении данных:", error);
+            }
             return [];
         }
     });
@@ -34,4 +36,4 @@ function displayUsers(users) {
         console.log({ firstName, lastName, age, gender, email, address });
     });
 }
-getFetch("https://dummyjson.com/userr").then(displayUsers);
+getFetch("https://dummyjson.com/users").then(displayUsers);
